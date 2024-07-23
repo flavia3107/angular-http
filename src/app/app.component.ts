@@ -10,4 +10,4 @@ import { UserPlacesComponent } from './places/user-places/user-places.component'
   styleUrl: './app.component.css',
   imports: [AvailablePlacesComponent, UserPlacesComponent],
 })
-export class AppComponent {}
+export class AppComponent { }
