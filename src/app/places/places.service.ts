@@ -40,8 +40,10 @@ export class PlacesService {
       this.userPlaces.set([...prevPlaces, place]);
     }
 
+    // store to localstorage instead
+
     return this.httpClient
-      .put('http://localhost:3000/user-places', {
+      .put('/assets/user-places', {
         placeId: place.id,
       })
       .pipe(
@@ -55,13 +57,14 @@ export class PlacesService {
 
   removeUserPlace(place: Place) {
     const prevPlaces = this.userPlaces();
+    // store to localstorage instead
 
     if (prevPlaces.some((p) => p.id === place.id)) {
       this.userPlaces.set(prevPlaces.filter((p) => p.id !== place.id));
     }
 
     return this.httpClient
-      .delete('http://localhost:3000/user-places/' + place.id)
+      .delete('/assets/user-places/' + place.id)
       .pipe(
         catchError(() => {
           this.userPlaces.set(prevPlaces);
