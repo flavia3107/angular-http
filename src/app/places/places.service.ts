@@ -17,14 +17,14 @@ export class PlacesService {
 
   loadAvailablePlaces() {
     return this.fetchPlaces(
-      '/assets/places.json',
+      './assets/places.json',
       'Something went wrong fetching the available places. Please try again later.'
     );
   }
 
   loadUserPlaces() {
     return this.fetchPlaces(
-      '/assets/user-places.json',
+      './assets/user-places.json',
       'Something went wrong fetching your favorite places. Please try again later.'
     ).pipe(
       tap({
