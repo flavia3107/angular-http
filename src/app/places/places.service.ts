@@ -17,14 +17,14 @@ export class PlacesService {
 
   loadAvailablePlaces() {
     return this.fetchPlaces(
-      'http://localhost:3000/places',
+      '/assets/places.json',
       'Something went wrong fetching the available places. Please try again later.'
     );
   }
 
   loadUserPlaces() {
     return this.fetchPlaces(
-      'http://localhost:3000/user-places',
+      '/assets/user-places.json',
       'Something went wrong fetching your favorite places. Please try again later.'
     ).pipe(
       tap({
@@ -74,8 +74,8 @@ export class PlacesService {
   }
 
   private fetchPlaces(url: string, errorMessage: string) {
-    return this.httpClient.get<{ places: Place[] }>(url).pipe(
-      map((resData) => resData.places),
+    return this.httpClient.get<Place[]>(url).pipe(
+      map((resData) => resData),
       catchError((error) => {
         console.log(error);
         return throwError(() => new Error(errorMessage));
